@@ -1,0 +1,38 @@
+<script setup>
+import { ref } from 'vue';
+
+import AppMenuItem from './AppMenuItem.vue';
+
+const model = ref([
+    {
+        label: 'Menu',
+        items: [{ label: 'Anasayfa', icon: 'pi pi-fw pi-home', to: '/' }]
+    },
+    {
+        items: [{ label: 'Kategoriler', icon: 'pi pi-fw pi-list', to: '/categories' }]
+    },
+    {
+        items: [{ label: 'Konular', icon: 'pi pi-fw pi-table', to: '/topics' }]
+    },
+    {
+        items: [{ label: 'Sorular', icon: 'pi pi-fw pi-question', to: '/questions' }]
+    },
+    {
+        items: [{ label: 'Kullanıcılar', icon: 'pi pi-fw pi-users', to: '/users' }]
+    },
+    {
+        items: [{ label: 'Analiz', icon: 'pi pi-fw pi-chart-bar', to: '/analytics' }]
+    }
+]);
+</script>
+
+<template>
+    <ul class="layout-menu">
+        <template v-for="(item, i) in model" :key="item">
+            <app-menu-item v-if="!item.separator" :item="item" :index="i"></app-menu-item>
+            <li v-if="item.separator" class="menu-separator"></li>
+        </template>
+    </ul>
+</template>
+
+<style lang="scss" scoped></style>
