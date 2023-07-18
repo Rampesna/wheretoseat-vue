@@ -33,7 +33,9 @@ const apiConstants = {
 
     // Analytics
     GetTopicScore: 'analytics/getTopicScore',
-    GetTopicAnswersByUserAndTopic: 'analytics/getTopicAnswersByUserAndTopic'
+    GetTopicAnswersByUserAndTopic: 'analytics/getTopicAnswersByUserAndTopic',
+
+    Test: 'Test'
 };
 
 export default apiConstants;
