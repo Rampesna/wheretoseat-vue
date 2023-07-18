@@ -18,29 +18,9 @@ export const routes = [
                 component: () => import('@/views/Dashboard.vue')
             },
             {
-                path: '/categories',
-                name: 'categories',
-                component: () => import('@/views/pages/categories/categories.vue')
-            },
-            {
-                path: '/topics',
-                name: 'topics',
-                component: () => import('@/views/pages/topics/topics.vue')
-            },
-            {
-                path: '/questions',
-                name: 'questions',
-                component: () => import('@/views/pages/questions/questions.vue')
-            },
-            {
                 path: '/users',
                 name: 'users',
                 component: () => import('@/views/pages/users/users.vue')
-            },
-            {
-                path: '/analytics',
-                name: 'analytics',
-                component: () => import('@/views/pages/analytics/analytics.vue')
             }
         ]
     },

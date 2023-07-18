@@ -44,25 +44,8 @@ onMounted(async () => {
 
                 <Column field="name" header="İsim Soyisim" :sortable="'true'" searchable></Column>
                 <Column field="email" header="E-Posta Adresi" :sortable="'true'" searchable></Column>
-
-                <Column field="role" header="Kullanıcı Rol" :sortable="'true'" searchable>
-                    <template #body="slotProps">
-                        <span v-if="slotProps.data.role === 'admin'" class="p-badge p-badge-danger p-mr-2">Yönetici</span>
-                        <span v-else class="p-badge p-badge-info p-mr-2">Kullanıcı</span>
-                    </template>
-                </Column>
-                <Column field="score.priceTotal" header="Kullanıcı Puanı" :sortable="'true'">
-                    <template #body="slotProps">
-                        <span :class="'p-badge p-badge-success p-mr-2'">{{ slotProps.data.score.scoreTotal }}</span>
-                    </template>
-                </Column>
-                <Column field="score.scoreTotal" header="Kullanıcı Bakiye" :sortable="'true'" searchable>
-                    <template #body="slotProps">
-                        <span class="p-badge p-badge-success p-mr-2">{{ slotProps.data.score.priceTotal }}</span>
-                    </template>
-                </Column>
-                <Column field="created_at" header="Eklenme Tarihi" sortable searchable></Column>
-                <Column field="updated_at" header="Güncellenme Tarihi" sortable searchable></Column>
+                <Column field="createdAt" header="Eklenme Tarihi" sortable searchable></Column>
+                <Column field="updatedAt" header="Güncellenme Tarihi" sortable searchable></Column>
                 <Column header="İşlemler">
                     <template #body="slotProps">
                         <span class="p-buttonset">

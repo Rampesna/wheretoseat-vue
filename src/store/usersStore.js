@@ -2,20 +2,11 @@ import { defineStore } from 'pinia';
 import NetworkManager from '@/core/NetworkManager';
 import ApiConstants from '@/core/ApiConstants';
 import { toast } from 'vue3-toastify';
+import moment from 'moment';
 
 const useUsersStore = defineStore('users', {
     state: () => ({
         users: [],
-        roles: [
-            {
-                name: 'Yönetici',
-                value: 'admin'
-            },
-            {
-                name: 'Kullanıcı',
-                value: 'user'
-            }
-        ],
         createDialog: false,
         editDialog: false,
         createUserData: {
@@ -35,8 +26,17 @@ const useUsersStore = defineStore('users', {
         async getAllUsers() {
             const response = await NetworkManager.get(ApiConstants.GetAllUsers);
             if (response.status === 200) {
-                this.users = response.data.data;
+                this.users = response.data.data.map((row) => {
+                    return {
+                        id: row.id,
+                        name: row.name,
+                        email: row.email,
+                        createdAt: moment(row.createdAt).format('DD.MM.YYYY HH:mm:ss')
+                    };
+                });
                 toast.success('Kullanıcılar başarıyla getirildi.');
+            } else {
+                toast.error('Kullanıcılar getirilirken bir hata oluştu.');
             }
         },
         async createUser() {
@@ -46,8 +46,7 @@ const useUsersStore = defineStore('users', {
                 this.createUserData = {
                     name: '',
                     email: '',
-                    password: '',
-                    role: ''
+                    password: ''
                 };
                 toast.success('Kullanıcı başarıyla oluşturuldu.');
                 await this.getAllUsers();
