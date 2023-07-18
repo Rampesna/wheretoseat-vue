@@ -2,8 +2,8 @@
 import { onMounted, ref } from 'vue';
 import { FilterMatchMode } from 'primevue/api';
 import useUsersStore from '@/store/usersStore';
-import CreateDialog from '@/views/pages/users/createDialog.vue';
-import EditDialog from '@/views/pages/users/editDialog.vue';
+import CreateDialog from '@/views/pages/users/dialogs/create.vue';
+import EditDialog from '@/views/pages/users/dialogs/update.vue';
 
 const usersStore = useUsersStore();
 
